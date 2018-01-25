@@ -124,4 +124,27 @@
 
 
 </body>
+<script>
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var content = JSON.parse(xhr.response);
+
+            console.log(content)
+
+            if (content.content === null) {
+                window.location.replace("http://bot.joeyderuiter.me/")
+            }
+
+        }
+    };
+
+    setInterval(function() {
+        xhr.open("GET", "api/route/", true);
+        xhr.send();
+    }, 1000);
+
+</script>
 </html>
